@@ -35,23 +35,17 @@ public class FoxPlushieItem extends Item{
 	@Override
 	public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
 		if (world.isClient && (remainingUseTicks % 4) == 0) {
-//			PlushieMod.LOGGER.info("use tick");
 
 			float yaw = (float) Math.toRadians(user.bodyYaw + 90);
 
 			Vec2f rot = new Vec2f((float) Math.cos(yaw), (float) Math.sin(yaw)).multiply(0.4f);
 
-			PlushieMod.LOGGER.info("rot {}.{} <=> {}", rot.x, rot.y, rot.length());
-
 			world.addParticle(
 
 				ParticleTypes.HEART,
-//				user.getX() + rot.getX(),
-//				user.getEyeY(),
-//				user.getZ() + rot.getY(),
 
 				user.getX() + rot.x + ((random.nextDouble() * 2) - 1) * 0.25,
-				/*user.getEyeY(),*/ user.getY() + 2,
+				user.getY() + 2,
 				user.getZ() + rot.y + ((random.nextDouble() * 2) - 1) * 0.25,
 				0.0,
 				0.1 + (random.nextDouble() * 0.5),
